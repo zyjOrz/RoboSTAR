@@ -1,0 +1,45 @@
+model_path: google/mt5-large
+body_codes: 96
+hand_codes: 192
+alpha_hand: 0.4
+max_source_length: 512
+max_motion_tokens: 100
+attn_implementation: eager
+stage_divisors: [8, 4, 2, 1]
+stage_loss_weights: [1.25, 1.10, 1.00, 1.25]
+label_smoothing: 0.0
+hand_loss_weight: 1.25
+length_loss_weight: 0.20
+contrastive_loss_weight: 0.03
+contrastive_temperature: 0.07
+retrieval_dropout: 0.10
+context_corruption_max: 0.12
+context_corruption_warmup: 1000
+context_corruption_ramp: 5000
+self_condition_max: 0.15
+self_condition_warmup: 2000
+self_condition_ramp: 6000
+epochs: 500
+max_steps: 100000
+micro_batch: 8
+eval_batch: 8
+gradient_accumulation: 3
+backbone_lr: 0.00002
+new_lr: 0.0001
+warmup_steps: 1000
+eta_min_ratio: 0.05
+weight_decay: 0.01
+betas: [0.9, 0.99]
+gradient_clip: 1.0
+amp_dtype: bf16
+seed: 20260625
+tf32: true
+fused_adamw: true
+bucket_size: 512
+ddp_bucket_cap_mb: 64
+eval_every: 1
+free_eval_every: 6
+free_eval_sources: 48
+free_eval_batch: 4
+save_every: 2
+early_stop_patience: 10

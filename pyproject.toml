@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robotstar"
+version = "0.1.0"
+description = "Text-to-continuous sign language motion generation"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10,<3.11"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+include = ["robotstar*"]
+
+[project.scripts]
+robotstar-infer = "robotstar.infer:main"
+robotstar-evaluate = "robotstar.evaluate:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

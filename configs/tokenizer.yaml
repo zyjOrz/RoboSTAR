@@ -1,0 +1,29 @@
+body_code_num: 96
+hand_code_num: 192
+body_levels: [4, 4, 6]
+hand_levels: [4, 6, 8]
+code_dim: 512
+width: 512
+depth: 3
+down_t: 2
+stride_t: 2
+dilation_growth_rate: 3
+commit_weight: 0.02
+min_frames: 40
+max_frames: 400
+learning_rate: 0.0002
+weight_decay: 0.0
+betas: [0.9, 0.99]
+epochs: 500
+micro_batch: 240
+eval_batch: 64
+gradient_accumulation: 1
+amp_dtype: bf16
+seed: 20260628
+eta_min: 0.000001
+gradient_clip: 1.0
+tf32: true
+fused_adamw: true
+bucket_size: 2048
+eval_every: 10
+save_every: 10
