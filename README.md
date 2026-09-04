@@ -23,7 +23,9 @@
     <img src="https://img.shields.io/badge/GitHub-Code-black">
   </a>
 
-  <img src="https://img.shields.io/badge/🤗_HuggingFace-Coming_Soon-orange">
+  <a href="https://huggingface.co/Ivystream/RoboSTAR">
+    <img src="https://img.shields.io/badge/🤗_HuggingFace-Model-orange">
+  </a>
 </p>
 
 <p align="center">
