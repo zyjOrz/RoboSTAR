@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RoboSTAR: Next-Scale Autoregressive Sign Language Motion Translation for Humanoid Robots." />
+  <meta name="theme-color" content="#ffffff" />
+
+  <meta property="og:title" content="RoboSTAR" />
+  <meta property="og:description" content="Text or speech to continuous American Sign Language motion for humanoid robots." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/teaser.png" />
+
+  <title>RoboSTAR</title>
+  <link rel="icon" href="assets/robostar_logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar" aria-label="Primary navigation">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="RoboSTAR home">
+        Robot<span>STAR</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <!-- Replace this file with your final logo while keeping the same path. -->
+      <img class="project-logo" src="assets/robostar_logo.png" alt="RoboSTAR logo" />
+
+      <h1>
+        <span class="pink">Robo</span><span class="green">S</span><span class="blue">T</span><span class="yellow">AR</span>:
+        Next-Scale<span class="yellow"> Autoregressive</span> 
+        <span class="green">S</span>ign Language Motion
+        <span class="blue">T</span>ranslation for Humanoid
+        <span class="pink">Robo</span>ts
+      </h1>
+
+      <div class="authors" aria-label="Authors">
+        <a href="https://www.yujiazeng.com/" target="_blank" rel="noopener noreferrer">Yujia Zeng<sup>*</sup></a>
+        <span aria-hidden="true">·</span>
+        <a href="https://pengchensheng.com/" target="_blank" rel="noopener noreferrer">Chensheng Peng<sup>*</sup></a>
+        <span aria-hidden="true">·</span>
+        <a href="https://thomaschen98.github.io/" target="_blank" rel="noopener noreferrer">Yuxin Chen<sup>*</sup></a>
+        <span aria-hidden="true">·</span>
+        <a href="https://alexshao.net/" target="_blank" rel="noopener noreferrer">Alex Shao</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://www.linkedin.com/in/nathan-jew-a31314273/" target="_blank" rel="noopener noreferrer">Nathan Jew</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://me.berkeley.edu/people/masayoshi-tomizuka/" target="_blank" rel="noopener noreferrer">Masayoshi Tomizuka</a>
+      </div>
+
+      <p class="affiliation">UC Berkeley</p>
+      <p class="equal"><sup>*</sup> Equal contribution</p>
+
+      <div class="hero-actions" aria-label="Project links">
+        <span class="button button-disabled" title="Paper coming soon" aria-disabled="true">
+          Paper <small>Coming Soon</small>
+        </span>
+
+        <a class="button" href="https://github.com/zyjOrz/RoboSTAR" target="_blank" rel="noopener noreferrer">
+          Code
+        </a>
+
+        <span class="button button-disabled" title="Hugging Face coming soon" aria-disabled="true">
+          Hugging Face <small>Coming Soon</small>
+        </span>
+      </div>
+
+    </section>
+
+    <section class="section-shell compact-section" aria-labelledby="tldr-title">
+      <div class="tldr-card">
+        <h2 id="tldr-title">TL;DR</h2>
+        <p>RoboSTAR translates text or speech into continuous American Sign Language motion for humanoid robots.</p>
+      </div>
+    </section>
+
+    <section class="section-shell media-section" aria-labelledby="teaser-title">
+      <div class="section-heading">
+        <p class="section-kicker">Overview</p>
+        <h2 id="teaser-title">Teaser</h2>
+      </div>
+      <!-- Replace docs/assets/teaser.png with your final teaser image. -->
+      <figure class="figure-card">
+        <img src="assets/teaser.png" alt="Placeholder for the RoboSTAR teaser figure" />
+      </figure>
+    </section>
+
+
+    <section id="abstract" class="section-shell text-section" aria-labelledby="abstract-title">
+      <div class="section-heading">
+        <p class="section-kicker">Paper</p>
+        <h2 id="abstract-title">Abstract</h2>
+      </div>
+      <div class="prose-card">
+        <p>
+          Sign-language interpretation in public communication relies on qualified professional interpreters and can
+           be difficult to scale, motivating
+robotic signing as a complementary accessibility interface. We present
+RoboSTAR, a text-conditioned sign language production (SLP) framework
+for generating human-centric sign
+motion that can be retargeted for robotic execution, with speech
+supported optionally through an external ASR front end. Conventional autoregressive approaches flatten motion into a single
+full-resolution token sequence, forcing long-range and local
+dependencies to be modeled at a uniform temporal granularity.
+RoboSTAR instead combines part-wise Finite Scalar Quantization with
+next-scale autoregression, generating motion over progressively finer
+temporal resolutions while predicting synchronized body and hand tokens
+in parallel within each step. This coarse-to-fine formulation provides
+compact long-range context before progressively refining motion details,
+while self-conditioning and context corruption improve robustness to
+cross-scale prediction errors. The generated motion is subsequently
+retargeted for physical humanoid execution. Extensive qualitative and quantitative evaluations demonstrate the
+effectiveness of RoboSTAR.
+        </p>
+      </div>
+    </section>
+
+    <section id="method" class="section-shell media-section" aria-labelledby="method-title">
+      <div class="section-heading">
+        <p class="section-kicker">Approach</p>
+        <h2 id="method-title">Method</h2>
+      </div>
+
+      <!-- Replace docs/assets/method.png with your final architecture figure. -->
+      <figure class="figure-card">
+        <img src="assets/method.png" alt="Placeholder architecture diagram for RoboSTAR" />
+        <figcaption>
+          Overview of the RoboSTAR architecture.
+        </figcaption>
+      </figure>
+
+      <div class="method-grid">
+  <article class="method-card">
+    <span class="method-index">01</span>
+    <h3>Novel Task</h3>
+    <p>
+    We introduce Embodied Sign Translation, a new task for translating language into sign motion executable by humanoid robots.
+  </p>
+  </article>
+
+  <article class="method-card">
+    <span class="method-index">02</span>
+    <h3>Part-Wise FSQ</h3>
+    <p>
+      Body and bilateral hands are represented with synchronized,
+      part-specific FSQ tokens.
+    </p>
+  </article>
+
+  <article class="method-card">
+    <span class="method-index">03</span>
+    <h3>Next-Scale Autoregression</h3>
+    <p>
+      Motion is generated from coarse to fine across temporal scales,
+      progressively refining global structure and fine articulation.
+    </p>
+  </article>
+
+  <article class="method-card">
+    <span class="method-index">04</span>
+    <h3>SC + GCC</h3>
+    <p>
+      Self-conditioning and generic context corruption improve robustness
+      to imperfect predictions propagated across scales.
+    </p>
+  </article>
+
+  <article class="method-card">
+    <span class="method-index">05</span>
+    <h3>Dynamics Metrics</h3>
+    <p>
+      New metrics characterize motion activity, magnitude, and freeze-tail
+      behavior beyond conventional geometric errors.
+    </p>
+  </article>
+
+  <article class="method-card">
+    <span class="method-index">06</span>
+    <h3>State-of-the-Art Results</h3>
+    <p>
+      Achieve the strongest overall performance across geometric,
+      BT, and dynamics evaluations.
+    </p>
+  </article>
+</div>
+
+    <section id="results" class="section-shell media-section" aria-labelledby="results-title">
+  <div class="section-heading">
+    <p class="section-kicker">Evaluation</p>
+    <h2 id="results-title">Results</h2>
+  </div>
+
+
+  <div class="table-wrap" role="region" aria-label="Quantitative comparison" tabindex="0">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th rowspan="2">Method</th>
+
+          <th colspan="2">DTW-PA-JPE ↓</th>
+          <th colspan="2">DTW-JPE ↓</th>
+          <th colspan="4">B-T BLEU ↑</th>
+          <th colspan="3">Motion Dynamics</th>
+        </tr>
+
+        <tr>
+          <th>Body</th>
+          <th>Hand</th>
+
+          <th>Body</th>
+          <th>Hand</th>
+
+          <th>B-1</th>
+          <th>B-2</th>
+          <th>B-3</th>
+          <th>B-4</th>
+
+          <th>
+            Dynamic<br>
+            ↔ 0.8
+          </th>
+
+          <th>
+            Magnitude<br>
+            ↔ 1
+          </th>
+
+          <th>
+            Freeze-tail<br>
+            ↓
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- GT: reference only -->
+        <tr class="gt-row">
+          <td>GT</td>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+          <td>--</td>
+          <td>22.45</td>
+          <td>8.59</td>
+          <td>3.95</td>
+          <td>1.96</td>
+          <td>0.804</td>
+          <td>1.000</td>
+          <td>0.036</td>
+        </tr>
+
+        <tr class="table-separator">
+          <td colspan="12"></td>
+        </tr>
+
+        <tr>
+          <td>PT</td>
+          <td>10.85</td>
+          <td>2.66</td>
+          <td>10.84</td>
+          <td>10.97</td>
+          <td>13.44</td>
+          <td>4.69</td>
+          <td>1.99</td>
+          <td>0.91</td>
+          <td>0.245</td>
+          <td>0.484</td>
+          <td>0.232</td>
+        </tr>
+
+        <tr>
+          <td>NAR</td>
+          <td><u>4.21</u></td>
+          <td><u>1.79</u></td>
+          <td><u>4.14</u></td>
+          <td><u>5.70</u></td>
+          <td>6.81</td>
+          <td>2.10</td>
+          <td>0.88</td>
+          <td>0.42</td>
+          <td>0.000</td>
+          <td>0.004</td>
+          <td>1.000</td>
+        </tr>
+
+        <tr>
+          <td>S-MotionGPT</td>
+          <td>11.84</td>
+          <td>3.92</td>
+          <td>11.91</td>
+          <td>13.30</td>
+          <td>12.01</td>
+          <td>4.33</td>
+          <td>1.99</td>
+          <td>1.03</td>
+          <td>0.005</td>
+          <td>0.016</td>
+          <td>0.294</td>
+        </tr>
+
+        <tr>
+          <td>T2S-GPT</td>
+          <td>4.35</td>
+          <td>1.82</td>
+          <td>4.27</td>
+          <td>5.78</td>
+          <td>7.13</td>
+          <td>2.79</td>
+          <td>1.28</td>
+          <td>0.60</td>
+          <td>0.000</td>
+          <td>0.000</td>
+          <td>1.000</td>
+        </tr>
+
+        <tr>
+          <td>SOKE</td>
+          <td>5.73</td>
+          <td>2.08</td>
+          <td>5.73</td>
+          <td>7.26</td>
+          <td><u>17.25</u></td>
+          <td><u>6.31</u></td>
+          <td><u>2.86</u></td>
+          <td><strong>1.39</strong></td>
+          <td><u>0.388</u></td>
+          <td><u>0.515</u></td>
+          <td><strong>0.163</strong></td>
+        </tr>
+
+        <tr class="table-separator">
+          <td colspan="12"></td>
+        </tr>
+
+        <tr class="ours-row">
+          <td><strong>Ours</strong></td>
+          <td><strong>3.96</strong></td>
+          <td><strong>1.52</strong></td>
+          <td><strong>3.87</strong></td>
+          <td><strong>5.34</strong></td>
+          <td><strong>20.08</strong></td>
+          <td><strong>7.12</strong></td>
+          <td><strong>3.04</strong></td>
+          <td><u>1.36</u></td>
+          <td><strong>0.432</strong></td>
+          <td><strong>0.523</strong></td>
+          <td><u>0.187</u></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Replace docs/assets/results.png with your final qualitative/result figure. -->
+  <!-- Result video -->
+<div class="video-card spaced-figure">
+  <video
+    controls
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  >
+    <source
+      src="assets/results_demo.mp4"
+      type="video/mp4"
+    />
+    Your browser does not support this video.
+  </video>
+</div>
+
+<!-- Qualitative results -->
+<figure class="figure-card spaced-figure">
+  <video
+    controls
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+  >
+    <source src="assets/result.mp4" type="video/mp4" />
+    Your browser does not support this video.
+  </video>
+
+  <figcaption>
+    Qualitative comparisons and real-robot execution results.
+  </figcaption>
+</figure>
+
+</section>
+
+    <section id="citation" class="section-shell text-section" aria-labelledby="citation-title">
+      <div class="section-heading">
+        <p class="section-kicker">Reference</p>
+        <h2 id="citation-title">Citation</h2>
+      </div>
+      <p class="section-intro">If you find RoboSTAR useful in your research, please consider citing our work.</p>
+      <div class="citation-card">
+        <button id="copy-citation" type="button" aria-label="Copy BibTeX citation">Copy</button>
+        <pre><code id="bibtex">@article{robostar2026,
+  title   = {RoboSTAR: Next-Scale Autoregressive Sign Language Motion Translation for Humanoid Robots},
+  author  = {...},
+  journal = {...},
+  year    = {2026}
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="section-shell text-section acknowledgements" aria-labelledby="ack-title">
+  <div class="section-heading">
+    <p class="section-kicker">Thanks</p>
+    <h2 id="ack-title">Acknowledgements</h2>
+  </div>
+
+  <div class="prose-card">
+    <ul>
+      <li>
+        <a href="https://github.com/2000ZRL/SOKE" target="_blank" rel="noopener noreferrer">SOKE</a>:
+        Our work follows SOKE in adopting its motion representation and sign retrieval formulation.
+      </li>
+
+      <li>
+        <a href="https://how2sign.github.io/" target="_blank" rel="noopener noreferrer">How2Sign Dataset</a>:
+        Our work uses the How2Sign dataset for training and evaluation.
+      </li>
+
+      <li>
+        <a href="https://imagine.enpc.fr/~leore.bensabath/HandMDM/" target="_blank" rel="noopener noreferrer">HandMDM</a>:
+        Our human-mesh rendering and visualization pipeline is inspired by HandMDM.
+      </li>
+    </ul>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <p>RoboSTAR · UC Berkeley · 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
