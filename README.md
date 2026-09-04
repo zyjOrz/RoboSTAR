@@ -23,9 +23,7 @@
     <img src="https://img.shields.io/badge/GitHub-Code-black">
   </a>
 
-  <span class="button button-disabled" title="Hugging Face coming soon" aria-disabled="true">
-    Hugging Face <small>Coming Soon</small>
-  </span>
+  <img src="https://img.shields.io/badge/🤗_HuggingFace-Coming_Soon-orange">
 </p>
 
 <p align="center">
