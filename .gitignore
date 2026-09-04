@@ -17,7 +17,6 @@ cache/
 *.safetensors
 *.npy
 *.npz
-*.mp4
 *.wav
 *.zip
 *.tar
