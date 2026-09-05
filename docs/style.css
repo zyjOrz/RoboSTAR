@@ -379,6 +379,9 @@ footer span {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.02rem, 2vw, 1.18rem);
   line-height: 1.82;
+
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .method-grid {
