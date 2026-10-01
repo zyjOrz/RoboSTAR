@@ -100,24 +100,7 @@
       </div>
       <div class="prose-card">
         <p>
-          Sign-language interpretation in public communication relies on qualified professional interpreters and can
-           be difficult to scale, motivating
-robotic signing as a complementary accessibility interface. We present
-RoboSTAR, a text-conditioned sign language production (SLP) framework
-for generating human-centric sign
-motion that can be retargeted for robotic execution, with speech
-supported optionally through an external ASR front end. Conventional autoregressive approaches flatten motion into a single
-full-resolution token sequence, forcing long-range and local
-dependencies to be modeled at a uniform temporal granularity.
-RoboSTAR instead combines part-wise Finite Scalar Quantization with
-next-scale autoregression, generating motion over progressively finer
-temporal resolutions while predicting synchronized body and hand tokens
-in parallel within each step. This coarse-to-fine formulation provides
-compact long-range context before progressively refining motion details,
-while self-conditioning and context corruption improve robustness to
-cross-scale prediction errors. The generated motion is subsequently
-retargeted for physical humanoid execution. Extensive qualitative and quantitative evaluations demonstrate the
-effectiveness of RoboSTAR.
+          Sign-language interpretation in public communication relies on qualified professional interpreters and can be difficult to scale, motivating robotic signing as a complementary accessibility interface. We present RoBoSTAR, a text-conditioned sign language production (SLP) framework for generating human-centric sign motion that can be retargeted for robotic execution, with speech supported optionally through an external ASR front end. Conventional autoregressive approaches flatten motion into a single full-resolution token sequence, forcing long-range and local dependencies to be modeled at a uniform temporal granularity. RoBoSTAR instead combines part-wise Finite Scalar Quantization with next-scale autoregression, generating motion over progressively finer temporal resolutions while predicting synchronized body and hand tokens in parallel within each step. This coarse-to-fine formulation provides compact long-range context before progressively refining motion details, while self-conditioning and context corruption improve robustness to cross-scale prediction errors. The generated motion is subsequently retargeted for physical humanoid execution. Extensive qualitative and quantitative evaluations are conducted to demonstrate the effectiveness of RoBoSTAR.
         </p>
       </div>
     </section>
