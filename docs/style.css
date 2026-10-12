@@ -107,6 +107,14 @@ footer span {
   margin: 0 auto;
 }
 
+.award-highlight {
+  margin: 16px auto 0;
+  color: #C53B3B;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-align: center;
+}
+
 .hero {
   padding: 30px 0 45px;
   text-align: center;
