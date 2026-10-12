@@ -31,8 +31,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/IROS%202026%20NOC%20Workshop-Best%20Paper%20Award-red?style=for-the-badge"
-       alt="IROS 2026 NOC Workshop Best Paper Award">
+  <strong style="color: red;">IROS 2026 NOC Workshop Best Paper Award</strong>
 </p>
 
 <p align="center">
